@@ -1,0 +1,7 @@
+﻿@page
+@model BookList_RazorPages_SPA.Pages.BookList.UpsertModel
+@{
+	var title = Model.Book.Id != 0 ? "Edit Book" : "New Book"; 
+	var saveupdate = Model.Book.Id != 0 ? "Update" : "Save";
+}
+<h2 class=" text-primary text-center">@title</h2>

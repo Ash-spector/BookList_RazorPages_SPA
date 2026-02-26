@@ -1,6 +1,8 @@
 using BookList_RazorPages_SPA.Data;
+using BookList_RazorPages_SPA.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookList_RazorPages_SPA.Pages.BookList
 {
@@ -11,8 +13,11 @@ namespace BookList_RazorPages_SPA.Pages.BookList
         {
             _context = context;
         }
-        public void OnGet()
+        public IEnumerable < Book> Books { get; set; }
+        
+        public async Task OnGet()
         {
+            Books = await _context.Books.ToListAsync();
         }
     }
 }
