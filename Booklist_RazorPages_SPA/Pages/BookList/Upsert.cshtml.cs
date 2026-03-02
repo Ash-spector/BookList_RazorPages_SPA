@@ -36,13 +36,6 @@ namespace BookList_RazorPages_SPA.Pages.BookList
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
-        public async Task <ActionResult>OnPostDelete(int id)
-        {
-            var BookInDb = await _context.Books.FindAsync(id);
-            if (BookInDb == null) return NotFound();
-            _context.Books.Remove(BookInDb);
-           await _context.SaveChangesAsync();
-            return RedirectToPage("./Index");
-        }
+        
     }
 }
