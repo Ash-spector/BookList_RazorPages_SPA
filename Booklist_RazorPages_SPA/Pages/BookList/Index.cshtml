@@ -36,24 +36,26 @@
 						<td>@book.ISBN</td>
 						<td>@book.Price</td>
 						<td>
+    <a class="btn btn-info"
+       asp-page="Upsert"
+       asp-route-id="@book.Id">
+        <i class="fas fa-edit"></i>
+    </a>
 
-							<a class="btn btn-sm btn-success"
-								   asp-page="Upsert"
-								   asp-route-id="@book.Id">
-								<i class=" fas fa-edit"> </i> Edit
-							</a>
+    <form method="post"
+          asp-page-handler="Delete"
+          style="display:inline">
+        <input type="hidden"
+               name="id"
+               value="@book.Id" />
 
-							<form method="post" style="display:inline">
-								<button type="submit"
-										class="btn btn-danger"
-										asp-page-handler="Delete"
-										asp-route-id="@book.Id"
-										onclick="return confirm('Want to delete data?')">
-									<i class="fas fa-trash-alt"></i> Delete
-								</button>
-							</form>
-
-						</td>
+        <button type="submit"
+                class="btn btn-danger"
+                onclick="return confirm('Want to Delete data ?')">
+            <i class="fas fa-trash-alt"></i>
+        </button>
+    </form>
+</td>
 					</tr>
 				}
 			</tbody>
@@ -64,18 +66,22 @@ else
 {
 	<p class="text-danger">No Data Found</p>
 }
-<h2 class=" text-danger text-center">OR</h2>
-<div class=" container rounded border p-2 m-2">
-	<table id=" tblData" class=" table table-bordered tabletable-striped table-active">
-<thead>
-	<tr>
-		<th>Title</th>
-		<th>Author</th>
-		<th>Description</th>
-		<th>ISBN</th>
-		<th>Price</th>
-		<th>Actions</th>
-	</tr>
-</thead>
+<h2 class="text-danger text-center">OR</h2>
+<div class="container rounded border p-2 m-2">
+	<table id="tblData" class="table table-bordered table-striped table-active">
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Description</th>
+				<th>ISBN</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
 	</table>
 </div>
+
+@section Scripts {
+	<script src="~/js/book.js"></script>
+}
